@@ -45,17 +45,6 @@ config :ssmsg, SsmsgWeb.Endpoint,
 # configured to run both http and https servers on
 # different ports.
 
-# Watch static and templates for browser reloading.
-config :ssmsg, SsmsgWeb.Endpoint,
-  live_reload: [
-    patterns: [
-      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
-      ~r{priv/gettext/.*(po)$},
-      ~r{lib/ssmsg_web/views/.*(ex)$},
-      ~r{lib/ssmsg_web/templates/.*(eex)$}
-    ]
-  ]
-
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 
@@ -65,11 +54,3 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
-
-# Configure your database
-config :ssmsg, Ssmsg.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "ssmsg_dev",
-  hostname: "localhost",
-  pool_size: 10

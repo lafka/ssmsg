@@ -7,14 +7,11 @@
 # General application configuration
 use Mix.Config
 
-config :ssmsg,
-  ecto_repos: [Ssmsg.Repo]
-
 # Configures the endpoint
 config :ssmsg, SsmsgWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "lqrKDDam8hxL0OatsO70GO7OYZ+Ky7aURSlYGnu6rSBglkgy05DnOSyJfZdw5fun",
-  render_errors: [view: SsmsgWeb.ErrorView, accepts: ~w(html json)],
+  secret_key_base: "SM7+nlm1xsO7M5DyRTpT+pNmmwiun01SrG6sMzqUXkrDSpqx1a1nSR6abVpafCB6",
+  render_errors: [view: SsmsgWeb.ErrorView, accepts: ~w(json)],
   pubsub: [name: Ssmsg.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

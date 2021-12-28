@@ -8,11 +8,3 @@ config :ssmsg, SsmsgWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
-
-# Configure your database
-config :ssmsg, Ssmsg.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "ssmsg_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
