@@ -1,19 +1,40 @@
-# Ssmsg
+# SSMSG
 
-To start your Phoenix server:
+A simple messaging service.
 
-  * Install dependencies with `mix deps.get`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+We're building a application that supports the following:
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+ 1. Post a json blob in the form `{"to": "user@example.com", "message": "Hello User!"}`
+ 2. Retrieve latest messages for one recipient by their ID, ie: `user@example.com`
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+Both should be available as HTTP endpoints and once completed the result should be the
+following:
 
-## Learn more
 
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+## Example: Creating some messages
+
+```
+$ curl localhost:4000/message -x POST -d '{"to": "alice@example.com", "message": "Hello Alice!"}`
+{"status": "OK"}
+
+$ curl localhost:4000/message -x POST -d '{"to": "bob@example.com", "message": "Hello Bob from Alice!"}`
+{"status": "OK"}
+
+$ curl localhost:4000/message -x POST -d '{"to": "bob@example.com", "message": "Hello Bob from Eve!"}`
+{"status": "OK"}
+```
+
+## Example: Listing all messages for the accounts
+
+```
+$ curl localhost:4000/message/bob@example.com
+[
+  {"to": "bob@example.com", "message": "Hello Bob from Alice!"},
+  {"to": "bob@example.com", "message": "Hello Bob from Eve!"}
+]
+
+$ curl localhost:4000/message/alice@example.com
+[
+  {"to": "bob@example.com", "message": "Hello Alice!"},
+]
+```
